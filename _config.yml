@@ -1,6 +1,6 @@
 # Site settings  基础设置
 title: ZhaoYLong Blog
-SEOTitle: Zhao's Blog | ZhaoYLong Blog
+SEOTitle: Zhao-Blog | ZhaoYLong-Blog
 header-img: img/post-bg-desk.jpg
 email: yunlongzhao1996@gmail.com
 description: "Deep Learning Er"
@@ -60,8 +60,8 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: da4f1e941980daf426e0                            #生成的clientID
-  clientSecret: 32bedca8ff117ca91b50e38b373f520747759407    #生成的clientSecret
+  clientID: 28896043cfc0fcaadaf1                           #生成的clientID
+  clientSecret: 7e440695f36027008beec259a6e9961ce391837f    #生成的clientSecret
   repo: ZhaoYLong.github.io    #仓库名称
   owner: ZhaoYLong    #github用户名
   admin: ZhaoYLong
