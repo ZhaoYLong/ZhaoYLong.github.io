@@ -9,7 +9,7 @@ header-img: img/post-bg-debug.png
 catalog:    true
 tag:
     - NPL
-    - 想法
+    - IDEA
 ---
 
 # 前言
