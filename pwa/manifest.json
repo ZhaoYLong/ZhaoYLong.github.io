@@ -1,14 +1,14 @@
 {
-  "name": "YL Blog",
-  "short_name": "YL Blog",
+  "name": "LAQUDEE",
+  "short_name": "LAQUDEE",
   "description": "A personal blog by programmer",
   "icons": [{
-    "src": "icons/pwa_icon_100.png",
-    "sizes": "100x100",
+    "src": "icons/pwa_cat_128.png",
+    "sizes": "128x128",
     "type": "image/png"
   }, {
-    "src": "icons/pwa_icon_500.png",
-    "sizes": "500x5100",
+    "src": "icons/pwa_cat_512.png",
+    "sizes": "512x512",
     "type": "image/png"
   }],
   "background_color": "#fff",
