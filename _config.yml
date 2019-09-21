@@ -13,7 +13,7 @@ github_repo: "https://github.com/ZhaoYLong/ZhaoYLong.github.io.git" # you code r
 # Sidebar settings  侧边栏
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "欺君者冒功，忠言者落职"
-sidebar-avatar: /img/w_cc_01.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/w_me_02.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
