@@ -287,7 +287,7 @@ public OneService getService(status){
   - Redis（2.0）
      - 1）引入依赖包； 2）添加配置文件； 3）添加Cache的配置类。
 
-## 3.3 将项目布置到本地
+### 3.3 将项目布置到本地
 - 因为我使用的是STS+maven，所以有以下几个步骤：
   - 下载
   - 导入项目
