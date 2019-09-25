@@ -6,7 +6,7 @@ subtitle:   A Cat Fly Here
 date:       2019-08-19
 author:     Laqudee.Z
 header-img: img/post-bg-debug.png
-catalog:    true
+catalog:    false
 tag:
    - Front End
    - IDEA
