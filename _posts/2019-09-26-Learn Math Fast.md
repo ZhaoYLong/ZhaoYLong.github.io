@@ -2,8 +2,8 @@
 layout:     post
 title:      Learn Math Fast
 
-subtitle:   
-date:       2019-09-25
+subtitle:   keep reading
+date:       2019-09-26
 author:     LLSourcell
 header-img: img/post-bg-debug.png
 catalog: true

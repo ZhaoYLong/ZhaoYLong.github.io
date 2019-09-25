@@ -2,7 +2,7 @@
 layout:     post
 title:      Deep Learning Papers Reading Roadmap
 
-subtitle:   
+subtitle:   more books here!
 date:       2019-09-25
 author:     [floodsung](https://github.com/floodsung)
 header-img: img/post-bg-debug.png
