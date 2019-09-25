@@ -6,7 +6,7 @@ subtitle:   more books here!
 date:       2019-09-26
 author:     floodsung
 header-img: img/post-bg-debug.png
-catalog: true
+catalog: false
 tags:
     - DL
     - ML
