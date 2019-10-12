@@ -15,8 +15,9 @@ tags:
 
 - 直接上代码吧，代码里啥都有
 
-```python
-# coding=utf-8
+```py
+# coding=utf-8   
+
 from sphfile import SPHFile
 import glob
 import os
