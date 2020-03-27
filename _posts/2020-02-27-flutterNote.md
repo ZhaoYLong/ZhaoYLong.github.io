@@ -478,4 +478,5 @@ I/flutter (17666): hello 3
 ```
 
 #### 1.5 dart和Java及JavaScript对比
-> https://book.flutterchina.club/chapter1/dart.html
+> [参考资源](https://book.flutterchina.club/chapter1/dart.html)
+

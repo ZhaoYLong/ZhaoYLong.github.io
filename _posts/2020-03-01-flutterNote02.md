@@ -155,3 +155,101 @@ void someFunction(double offset){
 - MaterialPageRoute继承自PageRoute类，PageRoute类是一个抽象类，表示占有整个屏幕空间的一个模态路由页面，它还定义了路由构建及切换时过渡动画的相关接口及属性。
 - builder:是一个widgetBuilder类型的回调函数，作用：构建路由页面的具体内容，返回值是一个widget。
 - settings：包含路由的配置信息，如路由名称、是否初始路由（首页）
+
+
+
+### flutter包管理
+- flutter使用配置文件```pubspec.yaml```来管理依赖
+
+```yaml
+#pubspec.yaml
+name: flutter_action
+description: First Flutter application.
+
+version: 1.0.0+1
+
+dependencies:
+    flutter:
+      sdk: flutter
+    cupertino_icno: ^0.1.2
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+````
+
+- name：应用或包名称
+- description：应用或包的描述、简介
+- version：应用或包的版本号
+- dependencies：应用或包依赖的其他包或插件
+- dev_dependencies：开发环境依赖的工具包（而不是flutter应用本身依赖的包）
+- flutter：flutter相关的配置选项
+
+- 注：若开发的flutter应用本身依赖某个包，我们需要将依赖的包添加到```dependencies```下。
+
+### Pub仓库
+
+- [PUb](https://pub.dev/)是Google官方的Dart Package仓库，类似于node中的npm仓库
+
+#### 示例
+- 实现一个显示随机字符串的widget，要用到```english_words```这个开源包，其中包含数千个常用的英文单词。
+- 步骤：
+  - 1.在pub上找到```english_worlds```包，并确定最新版本号及是否支持flutter。
+  - 2.将```english_words```添加到依赖列表中：
+
+  ```yaml
+  dependencies:
+    flutter:
+      sdk: flutter
+
+    cupertino_icons: ^0.1.0
+    # 新添加的依赖
+    english_words: ^3.1.3
+  ```
+  - 3.下载包 [操作方式](https://book.flutterchina.club/chapter2/flutter_package_mgr.html)
+
+  - 4.引入```english_wods```包
+    ```dart
+    import 'package:english_words/english_words.dart';
+    ```
+  
+  - 5.使用这个包来生成随机字符串
+
+#### 其他依赖方式
+- 除了依赖Pub仓库，还可以依赖本地包和git包
+
+- 本地包：
+
+```yaml
+dependencies:
+    pkg1:
+        path: ../../code/pkg1
+```
+
+- 依赖Git：
+
+```yaml
+dependencies:
+  pkg1:
+    git:
+      url: git://github.com/xxx/pkg1.git
+```
+
+```yaml
+dependencies:
+  package1:
+    git:
+      url: git://github.com/flutter/packages.git
+      path: packages/package1
+```
+
+> [补充阅读](https://www.dartlang.org/tools/pub/dependencies)
+
+
+### 资源管理
+- 用```pubspec.yaml```来管理资源
+
+- [详细参考](https://book.flutterchina.club/chapter2/flutter_assets_mgr.html)
