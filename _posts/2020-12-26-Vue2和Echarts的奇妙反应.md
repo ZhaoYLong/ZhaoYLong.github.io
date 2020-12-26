@@ -17,7 +17,9 @@ tag:
 > Echarts的前世今生我就不介绍了，感兴趣的可以去官网一探究竟。前端若是要开发图表功能，大概率都是使用Echarts或基于Echarts封装的工具。
 
 > [Vue3官网](https://vue3js.cn/)，我目前使用的是Vue2！[Vue2🔗](https://vuejs.org/)
+
 > [Echarts官网](https://echarts.apache.org/en/index.html)
+
 > [Echarts相关的API和配置项](https://echarts.apache.org/en/api.html#echarts)
 
 ## 1 创建Vue项目并引入Echarts
@@ -27,25 +29,34 @@ tag:
     vue create vue-echarts
 ```
 - 创建过程中会选择一些需要提前引入的包比如`ESlint`、`Vue-route`等。
+
 - 创建完项目后使用`npm`命令来安装所需要的Echarts包：
   ```shell
     npm install echarts --save
   ```
+
   ![创建项目](/img/vue-echarts/vue-create.png)
-- 也可以之间在`package.json`里的`dependencies`中直接写入Echarts包的版本，如下
+
+- 也可以之间在`package.json`里的`dependencies`中直接写入Echarts包的版本，如下，
+
   - 我安装的是`"echarts": "^4.0.4"`，Echarts高版本已经不再内嵌全国地图和省份地图了，需要使用Echarts地图功能的同学就需要自己单独引入全国地图数据和省份地图数据了。
+
   - ![package](/img/vue-echarts/package.png)
+
 - 写完之后，保存然后运行脚本`npm install`
 
 ### 1.2 在vue文件中引入`Echarts`
   ```js
     import echarts from 'echarts'
   ```
+
 - 例如在`map.vue`中引入echarts后，我们就可以在`<script></script>`代码块中使用echarts了。
 
 ## 2 Echarts的使用基本过程
 - 由于Vue框架的构造，我们在Vue项目中使用Echarts的过程和原生项目中使用Echart是类似的。不同的就是Vue的数据绑定方式对Echarts的更新渲染有一定的不同。要考虑到频繁操作dom来渲染echarts图表，浏览器是否会卡顿，cpu的使用率会攀升。这个在下面的章节介绍。
+
 - 介绍一下基本的使用流程：
+  
   ```html
   <template>
     <div class="mapBox">
@@ -206,18 +217,23 @@ tag:
     }
   </style>
   ```
+
 - 上面是一个简单的在Vue项目中使用Echarts map的例子，我删除了部分获取数据方法和其他一些在地图的操作的代码。(应该也能运行起来😓)
+
 - 逐步解析：
-  - 1. 在`<template></template>`模块中写入html标签
+  - 一. 在`<template></template>`模块中写入html标签
     - `<div class="map1" ref="map1" id="map1"></div>`，这是为了让Echarts知道将图表绘制在哪个地方。
     - 这里我使用了`ref`，这是Vue获取dom元素的一个命令`$refs`。
-  - 2. 初始化一个Echarts实例
+
+  - 二. 初始化一个Echarts实例
     - `this.map1 = echarts.init(this.$refs.map1)`
     - 同时这样的写法，也将这个Echarts实例绑到Vue实例中去了，这就是Vue的数据双向绑定。当然如果Echarts图表渲染往后，就不再变动，我们一般不会将实例绑到Vue实例中去。
-  - 3. 设置实例的配置项
+
+  - 三. 设置实例的配置项
     - `let options = {}`
     - Echarts图表的一些配置，和操作都在这里面配置。当然也可以通过API来修改配置项
-  - 4. 渲染图表
+
+  - 四. 渲染图表
     - `this.map1.setOption(options)`
     - 到这里图表就渲染成功了。这里使用了`$nextTick`命令包裹。
 
@@ -230,10 +246,15 @@ tag:
 ### 3.1 引入地图数据
 - 在第二章的例子里我已经引入了全国的地图
   `import "echarts/map/js/china.js"`
+
   - 作用是引入`node_modules`里的全国地图数据，（我使用的是低版本Echarts）.
+
   ![地图](/img/vue-echarts/map.png)
+
 - 因为要做省份地图联动，所有就要引入所有省份的地图数据，要是像引入全国数据时的一个一个写，就太蠢了。
+
 - 写了一个遍历文件夹的所有文件的方法，这样就引入了这个文件夹下的所有文件：
+
   ```js
     // 自动引入echarts/map/js/province/下的所有文件
     const modulesFiles = require.context('echarts/map/js/province', true, /.js$/)
@@ -244,14 +265,20 @@ tag:
     return modules
     }, {})
   ```
+
   ![data](/img/vue-echarts/allMap.png)
+
 - 到这里所需要的地图就全部引入了。这里使用`context()`方法，想进一步的同学也可以思考`import`和`require`的区别，面试会问到！
 
 ### 3.2 伪3D效果的地图
 > 我需要绘制一个有3d效果的，国界明亮，省界呈暗色的一个地图
+
 - 首先，使用配置里的`geo`项来配置一个全国的地图。
+
 - 其次，设置`geo`项里面的`shadowOffsetX: 4, shadowOffsetY: 4`，就会呈现出伪3D的效果。这样要注意隐藏掉南海群岛，不然显示出来的样式就难看了。
+
 - `geo`相关代码：
+
   ```js
         geo: {
           map: 'china', // 地图类型
@@ -302,8 +329,11 @@ tag:
           }],
         },
   ```
+
 - 至于省界和国界颜色不同，我们在`series`里面设置`borderWidth`，`borderColor`的值不同于`geo`里面的值就可以实现了
+
 - `serise`部分代码：
+
   ```js
     series: [ {
           type: 'map',
@@ -367,11 +397,15 @@ tag:
   ```
 ### 3.3 全国地图和省份地图切换
 - 这是一个最基本的需求，毕竟我要看全国的项目情况，也要看具体某个省的项目情况。
+
 - 我司的产品毕竟奇葩，设计2种：
   - 一是select下拉框切换地图
   - 二是点击省份上显示的label来切换地图
+
 - 这里就用到了`Echarts`的`on()`
+
 - 假设`this.map1`是Echarts的一个实例，如下：
+
   ```js
     let _this = let
     _this.map1.on('click', function (mapParam) {
@@ -381,9 +415,13 @@ tag:
         _this.map1.clear()
         _this.map1.setOption(option)
     }
+
   ```
+
   - 做切换主要就是这几句起作用。其他代码就是要判断是哪种方式操作的。
+
 - 下面贴出这地图内点击操作的代码：
+ 
   ```js
     this.$nextTick(() => {
         this.map1.setOption(options)
@@ -432,8 +470,11 @@ tag:
         })
     })
   ```
+
   - 这份代码可以参考！
+
 - 由于后端给我返回的省份下拉框的数据不符合Echarts地图数据的要求，我手动遍历改造了数据：
+  
   ```js
         let reg = '', itemvalue2 = ''
         _this.provinceList.map(item => {
@@ -458,7 +499,9 @@ tag:
             }
         })
   ```
+
 - 下拉框切换操作，就要考虑全国和省份2种地图了：
+  
   ```js
     if (item === '全国') {
         itemvalue2 = 'china'
@@ -466,11 +509,14 @@ tag:
          _this.initMap()
     }
   ```
+  
   - 这里我就偷懒了，如果是全国，就直接初始化地图了😀
 
 ### 3.4 在地图上显示标签
 - 这个其实利用的是`scatter`(气泡图)和里面的配置项`coordinateSystem: 'geo'`。
+
 - 相关代码：
+  
   ```js
         {
           name: '',
@@ -509,7 +555,9 @@ tag:
           zlevel: 1
         }
   ```
+
 - 上面代码里的`converData()`方法：
+
   ```js
     let convertData = function (data) {
         let res = [];
@@ -525,11 +573,14 @@ tag:
         return res;
     }
   ```
+
   - `geoCoordMap`是一个全国各省省会城市的坐标数组集合，等下在文末粘出。
 
 ### 3.5 省份地图要展示的标签
 > 由于全国地图和省份地图要展示的标签不同，所以`scatter`要在地图切换后随着改变样式和数据
+
 - 省份标签样式：
+   
     ```js
         let scatter = null
         scatter = {
@@ -570,13 +621,18 @@ tag:
 
 ## 4 Echarts和Vue
 > 在做项目的时候，页面要展示10个左右的Echarts图表（包括地图）。然后产品设计了一排按钮来更新页面中所有的图表。
+
 > 针对这个需求，我先将每个图表封装成一个vue子组件，然后我就遇到了一些问题......
 
 ### 4.1 页面各个部分的组成
 - 起初我将页面的组件分成3列，中间用来放置地图和一些操作。也就是说这个页面由3个子组件组成，设为`left.vue`，`map.vue`，`right.vue`
+
 - 我需要在`map.vue`这个子组件中去操作其他子组件里面的图表更新
+
 - 我本来可以将所有操作都放到父组件，然后在父组件获取全部数据，然后传给子组件去渲染。但是我已经把操作放到`map.vue`子组件了，又不想改。
+
 - 所有我借助了`vuex`这个状态管理工具，来管理这个页面里所有的数据。
+
 - 用`Event Bus`来调用子组件里面的方法去更新图表
 
 ### 4.2 遇到的问题
@@ -591,6 +647,7 @@ tag:
 
 ### 4.3 一些优化手段
 - 每次更新前，清空图表而不是销毁，避免重新初始化
+ 
   ```js
   let _this = this
     let option = _this.echartObject.getOption()
@@ -601,6 +658,7 @@ tag:
   ```
 
 - 切换路由时销毁实例，避免造成内存泄漏
+ 
   ```js
     if (this.echartObject) {
         echarts.echartObject(this.area);
@@ -608,6 +666,7 @@ tag:
   ```
 
 - 在`beforeDestory`钩子函数里，销毁实例
+  
   ```js
     beforeDestroy () {
         this.echartObject1.clear();
