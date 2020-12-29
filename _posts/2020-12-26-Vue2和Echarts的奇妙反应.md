@@ -9,7 +9,7 @@ catalog:    false
 tag:
     - Vue
     - Echarts
-    - 前端
+    - Front End
 ---
 
 > 为什么要写这篇博客呢，就是想把最近2个月使用Echarts的心得记录一下。我在10月入职了一家做地质方面的大数据公司，前端开发工作中主要使用到的技术栈：Vue+Leaflet+Supmap iClient+Echarts，后面项目可能会用到three.js但今天要讲的是Echarts的使用心得。

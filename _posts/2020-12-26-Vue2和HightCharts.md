@@ -9,7 +9,7 @@ catalog:    false
 tag:
     - Vue
     - HighCharts
-    - 前端
+    - Front End
 ---
 
 > 做大数据屏幕展示数据，3D图算是一种毕竟有冲击力的展示方式了。所有这次说一说在Vue2项目里如何使用HighCharts

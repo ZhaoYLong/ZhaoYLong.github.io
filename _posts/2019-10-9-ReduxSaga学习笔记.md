@@ -10,7 +10,6 @@ catalog: false
 tags:
     - Front End
     - Redux
-    - Redux-Saga
 ---
 
 - [英文原版官网](https://redux-saga.js.org)
