@@ -220,15 +220,7 @@ layout: default
     })
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
-<script>
-    (function () {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    })();
-  </script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
@@ -243,10 +235,8 @@ layout: default
         messageStyle: "none",
         "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
     });
-    </script>
-    
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+</script>
+
 <style>
     /* place left on bigger screen */
     @media all and (min-width: 800px) {
